@@ -1,0 +1,44 @@
+<div class="card">  
+    <div class="card-body">  
+      <form [formGroup]="ProductForm" novalidate>   
+        <div class="form-group">  
+          <label class="col-md-4">Product Name</label>  
+          <input type="text" class="form-control" formControlName="product_name" #ProductName />  
+        </div> 
+ 
+         <div *ngIf="ProductForm.controls['product_name'].invalid && (ProductForm.controls['product_name'].dirty || ProductForm.controls['product_name'].touched)" class="alert alert-danger">
+            <div *ngIf="ProductForm.controls['product_name'].errors.required">
+                Product Name is required.  
+            </div>
+        </div>
+
+
+
+        <div class="form-group">  
+          <label class="col-md-4">Product Description </label>  
+          <textarea class="form-control" formControlName="product_desc"  rows = 7 cols = "5"></textarea>  
+        </div>  
+
+        <div *ngIf="ProductForm.controls['product_desc'].invalid && (ProductForm.controls['product_desc'].dirty || ProductForm.controls['product_desc'].touched)" class="alert alert-danger">
+            <div *ngIf="ProductForm.controls['product_desc'].errors.required">
+                Product Description is required.  
+            </div>
+        </div>
+
+        <div class="form-group">  
+          <label class="col-md-4">Product Price</label>  
+          <input type="text" class="form-control" formControlName="product_price"  />  
+        </div>  
+
+        <div *ngIf="ProductForm.controls['product_price'].invalid && (ProductForm.controls['product_price'].dirty || ProductForm.controls['product_price'].touched)" class="alert alert-danger">
+            <div *ngIf="ProductForm.controls['product_price'].errors.required">
+                Product Price is required.  
+            </div>
+        </div>
+        
+        <div class="form-group">  
+          <button type="submit" (click)="add_product()" [disabled]="ProductForm.pristine || ProductForm.invalid"  class="btn btn-primary">Create Product</button>  
+        </div>  
+      </form>  
+    </div>  
+  </div>  

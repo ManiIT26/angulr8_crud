@@ -1,0 +1,46 @@
+ 
+  <div class="card">  
+    <div class="card-body"> 
+        <h3>Login</h3> 
+      <form [formGroup]="LoginForm" (submit)="login_submit(LoginForm)" novalidate>   
+        <div class="form-group">  
+          <label class="col-md-4">Username</label>  
+          <input type="text" class="form-control" formControlName="username" #ProductName />  
+        </div> 
+        
+        <div class="alert alert-danger" *ngIf="LoginForm.controls['username'].invalid && (LoginForm.controls['username'].dirty || LoginForm.controls['username'].touched)">
+            <div *ngIf="LoginForm.controls['username'].errors.required">
+                Enter Username
+            </div>
+        </div>
+
+        <div class="form-group">  
+          <label class="col-md-4">Password </label>  
+          <input class="form-control" formControlName="password"  >  
+        </div>  
+
+        <div class="alert alert-danger" *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)">
+            <div *ngIf="LoginForm.controls['password'].errors.required">
+                Enter Username
+            </div>
+            <div *ngIf="LoginForm.controls['password'].errors.pattern">
+                Enter One Uppercase, Lowercase, Numeric and Special Charcters.
+            </div>
+            
+        </div>
+        
+        <div class="form-group">  
+          <button type="submit"  [disabled]="LoginForm.pristine || LoginForm.invalid"  class="btn btn-primary">Create Product</button>  
+        </div>  
+
+        <div class="alert alert-danger"  *ngIf="showErrorMessage">
+            {{showErrorMessage}}
+        </div>
+
+        <div class="alert alert-success"  *ngIf="showSuccMessage">
+            {{showSuccMessage}}
+        </div>
+        
+      </form>  
+    </div>  
+  </div>  

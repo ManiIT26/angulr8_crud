@@ -1,0 +1,117 @@
+ 
+  <div class="card mt-5">  
+    <div class="card-body"> 
+        <h3>Register User</h3> 
+      <form [formGroup]="RegisterForm" (submit)="register_userForm(RegisterForm)"   novalidate>   
+        <div class="form-group">  
+          <label class="col-md-4">Name</label>  
+          <input type="text" class="form-control" formControlName="first_name" #ProductName />  
+        </div> 
+        
+        <div *ngIf="RegisterForm.controls['first_name'].invalid && (RegisterForm.controls['first_name'].dirty || RegisterForm.controls['first_name'].touched)">
+            <small *ngIf="RegisterForm.controls['first_name'].errors.required" class="text-danger">
+                Enter Name here..!
+            </small>      
+        </div>
+
+        <div class="form-group">  
+          <label class="col-md-4">Mail ID </label>  
+          <input type="email" class="form-control"  formControlName="usr_mail"  >  
+        </div>  
+
+        <div *ngIf="RegisterForm.controls['usr_mail'].invalid && (RegisterForm.controls['usr_mail'].dirty || RegisterForm.controls['usr_mail'].touched)">
+            <small *ngIf="RegisterForm.controls['usr_mail'].errors.required || RegisterForm.controls['usr_mail'].errors.email" class="text-danger">
+                Enter Valid Mail ID here..!
+            </small> 
+             
+        </div>
+
+        <div class="form-group">  
+            <label class="col-md-4">Mobile Number </label>  
+            <input type="number" class="form-control" formControlName="usr_mobile"  >  
+        </div>  
+
+        <div *ngIf="RegisterForm.controls['usr_mobile'].invalid && (RegisterForm.controls['usr_mobile'].dirty || RegisterForm.controls['usr_mobile'].touched)">
+            <small *ngIf="RegisterForm.controls['usr_mobile'].errors.required ||  RegisterForm.controls['usr_mobile'].errors.maxLength || RegisterForm.controls['usr_mobile'].errors.pattern" class="text-danger">
+                Enter Valid Mobile Number here..!
+            </small>      
+        </div>
+
+        <div class="form-group">  
+            <label class="col-md-4">Usre Name</label>  
+            <input class="form-control" formControlName="user_name"  >  
+        </div> 
+
+        <div *ngIf="RegisterForm.controls['user_name'].invalid && (RegisterForm.controls['user_name'].dirty || RegisterForm.controls['user_name'].touched)">
+            <small *ngIf="RegisterForm.controls['user_name'].errors.required" class="text-danger">
+                Enter Username here..!
+            </small>      
+        </div>
+
+        
+        
+        <div class="form-group">  
+            <label class="col-md-4">New Password</label>  
+            <input class="form-control" formControlName="new_password"  >  
+        </div> 
+
+        <div *ngIf="RegisterForm.controls['new_password'].invalid && (RegisterForm.controls['new_password'].dirty || RegisterForm.controls['new_password'].touched)">
+            <small *ngIf="RegisterForm.controls['new_password'].errors.required" class="text-danger">
+                Enter Password here..!
+
+            </small>    
+            
+            <small *ngIf="RegisterForm.controls['new_password'].errors.pattern" class="text-danger">
+                Enter One Uppercase, Lowercase, Numeric and Special Charcters.
+            </small> 
+        </div>
+
+        <div class="form-group">  
+            <label class="col-md-4">Confirm Password</label>  
+            <input class="form-control" formControlName="con_password"  >  
+        </div> 
+
+        <div *ngIf="RegisterForm.controls['con_password'].invalid && (RegisterForm.controls['con_password'].dirty || RegisterForm.controls['con_password'].touched)">
+            <small *ngIf="RegisterForm.controls['con_password'].errors.required" class="text-danger">
+                Enter Password here..!
+            </small>    
+            
+            <small *ngIf="RegisterForm.controls['con_password'].errors.pattern" class="text-danger">
+                Enter One Uppercase, Lowercase, Numeric and Special Charcters.
+            </small> 
+        </div>
+
+
+        <div class="form-group">  
+            <label class="col-md-4">User Type</label>  
+            <select class="form-control" formControlName="usr_type">
+                <option value="">Select</option>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+            </select>
+        </div> 
+
+        <div *ngIf="RegisterForm.controls['usr_type'].invalid && (RegisterForm.controls['usr_type'].dirty || RegisterForm.controls['usr_type'].touched)">
+            <small *ngIf="RegisterForm.controls['usr_type'].errors.required" class="text-danger">
+                Select User type here..!
+            </small> 
+            
+            
+        </div>
+
+
+        <div class="alert alert-danger"  *ngIf="ErrMessage">
+            {{ErrMessage}}
+        </div>
+
+        <div class="alert alert-success"  *ngIf="succMessage">
+            {{succMessage}}
+        </div>
+        
+        <div class="form-group">  
+          <button type="submit"  [disabled]="RegisterForm.pristine || RegisterForm.invalid"  class="btn btn-primary">Create Product</button>  
+        </div>  
+ 
+      </form>  
+    </div>  
+  </div>  
